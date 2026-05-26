@@ -1,0 +1,19 @@
+services:
+  litellm:
+    image: ghcr.io/berriai/litellm:main-latest
+    container_name: litellm
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    volumes:
+      - ./config.yaml:/app/config.yaml
+    command:
+      - "--config"
+      - "/app/config.yaml"
+      - "--port"
+      - "8000"
+      - "--drop_params"
+      - "--telemetry"
+      - "false"

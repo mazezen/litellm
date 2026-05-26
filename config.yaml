@@ -1,0 +1,36 @@
+model_list:
+  # DeepSeek V4 Flash
+  - model_name: claude-sonnet-4-20250514
+    litellm_params:
+      model: deepseek/deepseek-v4-flash
+      api_key: os.environ/DEEPSEEK_API_KEY
+
+  # DeepSeek V4 Pro
+  - model_name: claude-opus-4-20250514
+    litellm_params:
+      model: deepseek/deepseek-v4-pro
+      api_key: os.environ/DEEPSEEK_API_KEY
+
+  # DeepSeek V3（日常写代码主力）
+  - model_name: claude-3-5-sonnet-20241022
+    litellm_params:
+      model: deepseek/deepseek-chat
+      api_key: os.environ/DEEPSEEK_API_KEY
+
+  # DeepSeek R1（复杂推理）
+  - model_name: claude-3-opus-20240229
+    litellm_params:
+      model: deepseek/deepseek-reasoner
+      api_key: os.environ/DEEPSEEK_API_KEY
+
+  # Gemini 2.5 Flash（免费不限量）
+  - model_name: claude-3-5-haiku-20241022
+    litellm_params:
+      model: gemini/gemini-2.5-flash
+      api_key: os.environ/GEMINI_API_KEY
+
+  # Gemini 2.5 Pro（每天 50 次免费）
+  - model_name: claude-3-haiku-20240307
+    litellm_params:
+      model: gemini/gemini-2.5-pro
+      api_key: os.environ/GEMINI_API_KEY
