@@ -1,4 +1,20 @@
 services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: litellm_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: litellm
+      POSTGRES_PASSWORD: litellm123
+      POSTGRES_DB: litellm
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U litellm"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
   litellm:
     image: ghcr.io/berriai/litellm:main-latest
     container_name: litellm
@@ -9,11 +25,17 @@ services:
       - .env
     volumes:
       - ./config.yaml:/app/config.yaml
+    depends_on:
+      postgres:
+        condition: service_healthy
     command:
       - "--config"
-      - "/app/config.yaml"
+      - "./config.yaml"
       - "--port"
       - "8000"
       - "--drop_params"
       - "--telemetry"
       - "false"
+
+volumes:
+  postgres_data:
