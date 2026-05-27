@@ -9,10 +9,15 @@ litellm/
 └── docker-compose.yml # 一键部署
 ```
 
-### 1. 创建 .env（填入你的 API Key）
+### 使用
+```bash
+git clone https://github.com/mazezen/litellm.git
+```
 
-### 2. 创建 config.yaml（多模型映射）
+### 步骤
 
-### 3. 创建 docker-compose.yml
+1. 创建 .env（填入你的 API Key）
 
-###
+2. 创建 config.yaml（多模型映射）
+
+3. 创建 docker-compose.yml
